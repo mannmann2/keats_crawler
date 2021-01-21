@@ -14,15 +14,15 @@
 
 ### Config settings
 
-`MODULE`: Name of module and the folder in which to download files.
-`URL`: Keats url for the module
-`PATH`: Location in which to create the module folder
-`PATH_TO_CHROMEDRIVER`: Location of chromedriver executable
-`COOKIES`: Copy and add cookies from your browser after logging into Keats
-`DOWNLOAD_VIDEOS`: True/False - Download videos embedded in Keats (Won't work for videos linked on some other website)
-`DOWNLOAD_RESOURCES`: True/False - Download the non-video resources (ppt, pdf, py, etc)
-`SKIP_DUPLICATES`: True/False - To skip files already downloaded (Only works if the previous downloads occurred using this package)
-`REMEMBER_DOWNLOADS`: True/False - Add files being downloaded in current crawl to a duplicate filter (Used to check duplicates)
+`MODULE`: Name of module and the folder in which to download files  
+`URL`: Keats url for the module  
+`PATH`: Location in which to create the module folder  
+`PATH_TO_CHROMEDRIVER`: Location of chromedriver executable  
+`COOKIES`: Copy and add cookies from your browser after logging into Keats  
+`DOWNLOAD_VIDEOS`: True/False - Download videos embedded in Keats (Won't work for videos linked on some other website)  
+`DOWNLOAD_RESOURCES`: True/False - Download the non-video resources (ppt, pdf, py, etc)  
+`SKIP_DUPLICATES`: True/False - To skip files already downloaded (Only works if the previous downloads occurred using this package)  
+`REMEMBER_DOWNLOADS`: True/False - Add files being downloaded in current crawl to a duplicate filter (Used to check duplicates)  
 
 
 * Free software: MIT license
