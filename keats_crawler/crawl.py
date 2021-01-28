@@ -78,9 +78,8 @@ def parse_frame(iframe):
     soup2 = BeautifulSoup(match.group(0), 'html.parser')
 
     m3u8 = soup2.find('video')['src'].split('?')[0]
-    VIDEO_DICT[name] = m3u8
     driver.switch_to.default_content()
-
+    return name, m3u8
 
 def vid_download(name, m3u8):
         name_ = re.sub(r'[\\/:*?"<>|]', '.', name)
@@ -133,24 +132,30 @@ def run():
 
 
     if DOWNLOAD_VIDEOS:
+        if VIDEO_LIMIT:
+            vid_links = vid_links[:VIDEO_LIMIT]
+
         print('Found', len(vid_links), 'videos')
         print('Extracting video links...')
 
+        ch = 'y'
         for i, (anchor, link) in enumerate(vid_links):
 
-            driver.get(link)
-            iframe = driver.find_element_by_xpath("//iframe[@class='mwEmbedKalturaIframe'] | //iframe[@id='contentframe']")
-            parse_frame(iframe)
+            if VIDEO_PROMPT:
+                ch = input(f'Download {anchor}? (y/n) ')
+
+            if ch in ['y', 'Y']:
+                driver.get(link)
+                iframe = driver.find_element_by_xpath("//iframe[@class='mwEmbedKalturaIframe'] | //iframe[@id='contentframe']")
+                name, m3u8 = parse_frame(iframe)
+                VIDEO_DICT[name] = (m3u8, link, anchor)
+
+        # threads = []
+        for name, (m3u8, link, anchor) in VIDEO_DICT.items():
 
             if REMEMBER_DOWNLOADS:
                 remember(link, anchor)
 
-            print('.', end='')
-
-        print('\nDownloading videos...')
-
-        # threads = []
-        for name, m3u8 in VIDEO_DICT.items():
             vid_download(name, m3u8)
         #     th = Thread(target=vid_download, args=(name, m3u8))
         #     th.start()

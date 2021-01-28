@@ -19,8 +19,10 @@
 `PATH`: Location in which to create the module folder  
 `PATH_TO_CHROMEDRIVER`: Location of chromedriver executable  
 `COOKIES`: Copy and add cookies from your browser after logging into Keats  
-`DOWNLOAD_VIDEOS`: True/False - Download videos embedded in Keats (Won't work for videos linked on some other website)  
 `DOWNLOAD_RESOURCES`: True/False - Download the non-video resources (ppt, pdf, py, etc)  
+`DOWNLOAD_VIDEOS`: True/False - Download videos embedded in Keats (Won't work for videos linked on some other website)  
+`VIDEO_PROMPT`: True/False - Prompt before extracting each video for download (Disabling this will automatically download all extracted videos)  
+`VIDEO_LIMIT`: Integer or None - Limit the number of videos extracted  
 `SKIP_DUPLICATES`: True/False - To skip files already downloaded (Only works if the previous downloads occurred using this package)  
 `REMEMBER_DOWNLOADS`: True/False - Add files being downloaded in current crawl to a duplicate filter (Used to check duplicates)  
 
