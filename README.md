@@ -1,6 +1,9 @@
 # Keats Crawler
 
-This is a python module for downloading videos and resources from KCL's Keats e-learning platform.  
+This is a python module for downloading videos and other resources from KCL's Keats e-learning platform. 
+
+By default, it remembers the content you've already downloaded, so will skip it subsequently when you need to get the more recent files. Works on most module pages but there are some edge cases where it might run into issues.
+
 
 ### Requirements
  - Python 3
