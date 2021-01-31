@@ -11,7 +11,7 @@ This is a python module for downloading videos and resources from KCL's Keats e-
 1. `cd keats_crawler`
 1. `pip install -r requirements.txt`
 1. [Download chromedriver](https://chromedriver.chromium.org/downloads) for your version of Chrome
-1. `sudo apt install ffmpeg` (for Windows you'll need an alternative)
+1. `sudo apt install ffmpeg`
 
 ### Usage
 1. Self enrol in the Keats module, if not already enrolled
