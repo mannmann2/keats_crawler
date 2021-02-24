@@ -3,15 +3,16 @@ from config import *
 
 import os
 import re
-import subprocess
 from threading import Thread
 
 import requests
 from urllib.parse import unquote
 from bs4 import BeautifulSoup
+from m3u8downloader.main import M3u8Downloader
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+
 
 VIDEO_DICT = {}
 
@@ -39,8 +40,8 @@ def is_duplicate(href, anchor):
     return False
 
 
-def remember(href, anchor):
-    code = href.split('=')[-1]
+def remember(url, anchor):
+    code = url.split('=')[-1]
     file = f'{code} - {MODULE}/{anchor}'
 
     with open('duplicates.txt', 'a') as f:
@@ -81,13 +82,12 @@ def parse_frame(iframe):
     driver.switch_to.default_content()
     return name, m3u8
 
+
 def vid_download(name, m3u8):
         name_ = re.sub(r'[\\/:*?"<>|]', '.', name)
         path = f'{PATH}{name_}.mp4'
 
-        cmd = f"ffmpeg -i {m3u8} -c copy -bsf:a aac_adtstoasc".split() + [path]
-        print(cmd)
-        subprocess.run(cmd)
+        M3u8Downloader(m3u8, path).start()
 
         print(f'--- {name} ... Done')
 
@@ -101,8 +101,7 @@ def run():
     for k, v in COOKIE_DICT.items():
         driver.add_cookie({'name': k, 'value': v})
 
-    driver.get(URL)
-
+    driver.get(URLS[MODULE])
 
     soup = BeautifulSoup(driver.page_source.replace('\n', ' '), 'html.parser')
     links = soup.find_all('a', class_='aalink')
@@ -119,9 +118,8 @@ def run():
         print('Downloading...', len(res_links), 'resources')
 
         threads = []
-        for i, (anchor, link) in enumerate(res_links):
-
-            th = Thread(target=res_download, args=(link, anchor))
+        for i, (anchor, url) in enumerate(res_links):
+            th = Thread(target=res_download, args=(url, anchor))
             th.start()
             threads.append(th)
 
@@ -139,24 +137,25 @@ def run():
         print('Extracting video links...')
 
         ch = 'y'
-        for i, (anchor, link) in enumerate(vid_links):
+        for i, (anchor, url) in enumerate(vid_links):
 
             if VIDEO_PROMPT:
                 ch = input(f'Download {anchor}? (y/n) ')
 
             if ch in ['y', 'Y']:
-                driver.get(link)
+                driver.get(url)
                 iframe = driver.find_element_by_xpath("//iframe[@class='mwEmbedKalturaIframe'] | //iframe[@id='contentframe']")
                 name, m3u8 = parse_frame(iframe)
-                VIDEO_DICT[name] = (m3u8, link, anchor)
+                VIDEO_DICT[name] = (m3u8, url, anchor)
 
         # threads = []
-        for name, (m3u8, link, anchor) in VIDEO_DICT.items():
-
-            if REMEMBER_DOWNLOADS:
-                remember(link, anchor)
+        for name, (m3u8, url, anchor) in VIDEO_DICT.items():
 
             vid_download(name, m3u8)
+
+            if REMEMBER_DOWNLOADS:
+                remember(url, anchor)
+
         #     th = Thread(target=vid_download, args=(name, m3u8))
         #     th.start()
         #     threads.append(th)

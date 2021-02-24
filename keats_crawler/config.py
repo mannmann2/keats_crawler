@@ -1,19 +1,18 @@
 # Quick Links...
 
 # MODULE = 'Machine Learning'
-# URL = 'https://keats.kcl.ac.uk/course/view.php?id=89936'
-
-# MODULE = 'Data Mining'
-# URL = 'https://keats.kcl.ac.uk/course/view.php?id=77818&section=6'
-
+MODULE = 'Data Mining'
 # MODULE = 'Pattern Recognition'
-# URL = 'https://keats.kcl.ac.uk/course/view.php?id=77831'
-
 # MODULE = 'Distributed Ledgers'
-# URL = 'https://keats.kcl.ac.uk/course/view.php?id=77817'
+# MODULE = 'Nature Inspired Learning Algorithms'
 
-MODULE = 'Nature Inspired Learning Algorithms'
-URL = 'https://keats.kcl.ac.uk/course/view.php?id=86406'
+URLS = {
+    'Machine Learning': 'https://keats.kcl.ac.uk/course/view.php?id=89936',
+    'Data Mining': 'https://keats.kcl.ac.uk/course/view.php?id=77818&section=10',
+    'Pattern Recognition': 'https://keats.kcl.ac.uk/course/view.php?id=77831',
+    'Distributed Ledgers': 'https://keats.kcl.ac.uk/course/view.php?id=77817',
+    'Nature Inspired Learning Algorithms': 'https://keats.kcl.ac.uk/course/view.php?id=86406'
+}
 
 
 # Location in which to create the module folder
@@ -23,8 +22,8 @@ PATH = '/mnt/c/Users/arman/Desktop/Lectures/'
 PATH_TO_CHROMEDRIVER = '/mnt/c/Users/arman/Desktop/notebooks/chromedriver.exe'
 
 # Copy and add cookies from your browser after logging into Keats
-COOKIES = '_ga=GA1.3.515879790.1582456300; gtm_isp_lookup=true; __zlcmid=105jQ7Y1SeNMxlN; _shibsession_64656661756c7468747470733a2f2f6b656174732e6b636c2e61632e756b2f73686962626f6c657468=_4773cf2eda2c344e58b56d8fe8f8a827; MoodleSession=trk41e6i1f3mtlb67ska2adgh4'
-COOKIE_DICT = dict([cookie.split('=') for cookie in COOKIES.split('; ')])
+COOKIES = '_ga=GA1.3.515879790.1582456300; gtm_isp_lookup=true; __zlcmid=105jQ7Y1SeNMxlN; __utma=215434893.515879790.1582456300.1613232743.1613232743.1; __utmz=215434893.1613232743.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=215434893; nmstat=7937c121-4c83-54a8-d8b9-571c314aec35; _shibsession_64656661756c7468747470733a2f2f6b656174732e6b636c2e61632e756b2f73686962626f6c657468=_dbba4e090f69f3571e15827e96ce6f4e; MoodleSession=gvp92kr52vro4cjb4t35tkjmu8'
+COOKIE_DICT = dict([cookie.split('=', 1) for cookie in COOKIES.split('; ')])
 
 # Download the non video files (ppt, pdf, py, etc)
 DOWNLOAD_RESOURCES = True

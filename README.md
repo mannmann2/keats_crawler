@@ -15,7 +15,7 @@
 ### Config settings
 
 `MODULE`: Name of module and the folder in which to download files  
-`URL`: Keats url for the module  
+`URLS`: Mapping between Module names and their Keats urls  
 `PATH`: Location in which to create the module folder  
 `PATH_TO_CHROMEDRIVER`: Location of chromedriver executable  
 `COOKIES`: Copy and add cookies from your browser after logging into Keats  
