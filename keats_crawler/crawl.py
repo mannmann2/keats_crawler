@@ -49,6 +49,10 @@ def remember(url, anchor):
 
 
 def res_download(url, anchor):
+
+    if REMEMBER_DOWNLOADS:
+        remember(url, anchor)
+
     try:
         res = requests.get(url + '&redirect=1', timeout=10, cookies=COOKIE_DICT)
     except requests.exceptions.Timeout:
@@ -57,11 +61,12 @@ def res_download(url, anchor):
 
     name = unquote(res.url.split('/')[-1])
     name = re.sub(r'[\\/:*?"<>|]', '.', name)
+    if anchor.endswith('URL') and not name.endswith('.pdf'):
+        print(f'--- {name} ... skipping')
+        return
+
     with open(f'{PATH}{name}', 'wb') as f:
         f.write(res.content)
-
-    if REMEMBER_DOWNLOADS:
-        remember(url, anchor)
 
     print(f'--- {name} ... Done')
 
@@ -84,12 +89,12 @@ def parse_frame(iframe):
 
 
 def vid_download(name, m3u8):
-        name_ = re.sub(r'[\\/:*?"<>|]', '.', name)
-        path = f'{PATH}{name_}.mp4'
+    name_ = re.sub(r'[\\/:*?"<>|]', '.', name)
+    path = f'{PATH}{name_}.mp4'
 
-        M3u8Downloader(m3u8, path).start()
+    M3u8Downloader(m3u8, path).start()
 
-        print(f'--- {name} ... Done')
+    print(f'--- {name} ... Done')
 
 
 def run():
@@ -109,16 +114,19 @@ def run():
     if SKIP_DUPLICATES:
         vid_links = [(link.text, link['href']) for link in links if '/kalvid' in link.get('href', '') and not is_duplicate(link['href'], link.text)]
         res_links = [(link.text, link['href']) for link in links if '/resource' in link.get('href', '') and not is_duplicate(link['href'], link.text)]
+        url_links = [(link.text, link['href']) for link in links if '/mod/url' in link.get('href', '') and not is_duplicate(link['href'], link.text)]
+
     else:
         vid_links = [(link.text, link['href']) for link in links if '/kalvid' in link.get('href', '')]
         res_links = [(link.text, link['href']) for link in links if '/resource' in link.get('href', '')]
+        url_links = [(link.text, link['href']) for link in links if '/mod/url' in link.get('href', '')]
 
 
     if DOWNLOAD_RESOURCES:
         print('Downloading...', len(res_links), 'resources')
 
         threads = []
-        for i, (anchor, url) in enumerate(res_links):
+        for i, (anchor, url) in enumerate(res_links + url_links):
             th = Thread(target=res_download, args=(url, anchor))
             th.start()
             threads.append(th)
