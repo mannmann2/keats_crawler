@@ -1,17 +1,19 @@
 # Quick Links...
 
 # MODULE = 'Machine Learning'
-MODULE = 'Data Mining'
+# MODULE = 'Data Mining'
 # MODULE = 'Pattern Recognition'
 # MODULE = 'Distributed Ledgers'
 # MODULE = 'Nature Inspired Learning Algorithms'
 
 URLS = {
     'Machine Learning': 'https://keats.kcl.ac.uk/course/view.php?id=89936',
-    'Data Mining': 'https://keats.kcl.ac.uk/course/view.php?id=77818&section=10',
+    'Data Mining': 'https://keats.kcl.ac.uk/course/view.php?id=77818&section=13',
     'Pattern Recognition': 'https://keats.kcl.ac.uk/course/view.php?id=77831',
     'Distributed Ledgers': 'https://keats.kcl.ac.uk/course/view.php?id=77817',
-    'Nature Inspired Learning Algorithms': 'https://keats.kcl.ac.uk/course/view.php?id=86406'
+    'Nature Inspired Learning Algorithms': 'https://keats.kcl.ac.uk/course/view.php?id=86406',
+    'Agent-Based Modelling in Finance': 'https://keats.kcl.ac.uk/course/view.php?id=77803',
+    'High Frequency Finance': 'https://keats.kcl.ac.uk/course/view.php?id=77824'
 }
 
 
@@ -46,6 +48,22 @@ REMEMBER_DOWNLOADS = True
 # Run in headless mode. Let it be true unless you know a bit about selenium
 HEADLESS = True
 
+# Links to videos on MS Streams
+MS_STREAMS_LINKS = [
+    # 'https://web.microsoftstream.com/video/0ae20a10-7ba8-4610-8c0a-0f1fc9b74fca',
+    # 'https://web.microsoftstream.com/video/9d196631-94d3-4c29-95ec-607e5fda9037',
+    # 'https://web.microsoftstream.com/video/994e653d-0f02-4f01-a6c2-7ec46c2e6cee',
+    # 'https://web.microsoftstream.com/video/5964bd67-8e1b-41d6-a972-55a33accb6ec',
+    # 'https://web.microsoftstream.com/video/a81cab3f-e004-4962-90eb-216abb2dfab7',
+    # 'https://web.microsoftstream.com/video/56c2c2d2-63b0-481c-94ee-46e0d5710be3',
+    'https://web.microsoftstream.com/video/7b1ce6e9-898d-4fcc-b15a-5969886d9dc7',
+]
+
+# Download videos published on MS Streams (requires access token)
+DOWNLOAD_MS_STREAMS = True
+
+# Auth token for MS Streams
+MS_STREAMS_ACCESS_TOKEN = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovLyoubWljcm9zb2Z0c3RyZWFtLmNvbSIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzgzNzBjZjE0LTE2ZjMtNGMxNi1iODNjLTcyNDA3MTY1NDM1Ni8iLCJpYXQiOjE2MTkyODUyNDEsIm5iZiI6MTYxOTI4NTI0MSwiZXhwIjoxNjE5Mjg5MTQxLCJhY3IiOiIxIiwiYWlvIjoiQVVRQXUvOFRBQUFBSWg2R0RiTVlHWDRuQldveU9MdWc3YXlqazh2WGs2YUZCWlhqVms2azZHTGl4a0hHVzJWbGlWb1FNbTJ6T25CczhTTmNxT2MwRGkrM0xVZFMzL2o3M0E9PSIsImFtciI6WyJwd2QiLCJtZmEiXSwiYXBwaWQiOiJjZjUzZmNlOC1kZWY2LTRhZWItOGQzMC1iMTU4ZTdiMWNmODMiLCJhcHBpZGFjciI6IjIiLCJmYW1pbHlfbmFtZSI6Ik1hbm4iLCJnaXZlbl9uYW1lIjoiQXJtYW4iLCJpcGFkZHIiOiIxMjAuNTkuMjkuMjIyIiwibmFtZSI6Ik1hbm4sIEFybWFuIiwib2lkIjoiZGU0MzI0NGMtYmFhOS00YzdhLWI1MTctYjgzMzJmZjk5ZjBkIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTExMDE5ODU0ODctNDA1NTg2ODY2OC0yNTMyNjE1MzE3LTY1MzA4OCIsInB1aWQiOiIxMDAzMjAwMEZENzM2MUJEIiwicmgiOiIwLkFRVUFGTTl3Z19NV0ZreTRQSEpBY1dWRFZ1ajhVOF8yM3V0S2pUQ3hXT2V4ejRNRkFQNC4iLCJzY3AiOiJhY2Nlc3NfbWljcm9zb2Z0c3RyZWFtX3NlcnZpY2UiLCJzdWIiOiJ5UWM5Q3NscmVKNXpaQ0VtaDB4blFyS0FNWVJmSDhsd01YVjFXT0hacldNIiwidGlkIjoiODM3MGNmMTQtMTZmMy00YzE2LWI4M2MtNzI0MDcxNjU0MzU2IiwidW5pcXVlX25hbWUiOiJrMjAwMDk4OTNAa2NsLmFjLnVrIiwidXBuIjoiazIwMDA5ODkzQGtjbC5hYy51ayIsInV0aSI6InFfajhrUDZlM1UtWm4yYUhpUTVOQUEiLCJ2ZXIiOiIxLjAifQ.JYk_uS1LO0Vfs8hFrbPkQZTqab6h2HvlaAEBPR5-l4D8aw34ARC5e1W6L0MBQ3C7lkuuEhbwwPtixNeDJVNaD9KRl1c3K8_2OO2gG0ZpZCWn5ItsXPJwwvyzSweujYLjuELs1xV7ymcNKZcRo_FmDDUz2z6nQ9tl3Hw7m-Uga9JI1CLHoPuV9KWuCqowa6SGgLBFdpeqXtyY2npKs7dg6_rfupdFdhxDsF-VS9W7jxetxvrXFRQYqQp9HkHS1HzJwVFrlpgF0Vhix0Exm0Ge-BX5CiXUhNmOqsXL8VrvU_LD-w0QQxegu1i8nMpaWywvuRHE3wiXCsRRXArX6HMwRw'
 
 # Links to other modules...
 
