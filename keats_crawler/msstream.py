@@ -1,7 +1,7 @@
 import requests
 import subprocess
 
-from config import MS_STREAMS_ACCESS_TOKEN, MS_STREAMS_LINKS
+from config import MS_STREAM_ACCESS_TOKEN, MS_STREAM_LINKS
 from config import PATH, MODULE
 
 PATH = f'{PATH}{MODULE}/'
