@@ -4,6 +4,7 @@ This is a python module for downloading videos and other resources from KCL's Ke
 
 By default, it remembers the content you've already downloaded, so will skip it subsequently when you need to get the more recent files. Works on most module pages but there are some edge cases where it might run into issues.
 
+**NEW:** Now with the ability to download videos from Microsoft Stream.
 
 ### Requirements
  - Python 3
@@ -22,8 +23,8 @@ By default, it remembers the content you've already downloaded, so will skip it 
 1. Run: `python crawl.py`
 
 ### Usage for downloading videos from Microsoft Streams
-1. Get video links and access token from https://web.microsoftstreams.com
-1. Run: `python msstram.py`
+1. Get video links and access token from https://web.microsoftstream.com
+1. Run: `python msstream.py`
 
 ### Config settings
 `MODULE`: Name of module and the folder in which to download files  
@@ -39,8 +40,7 @@ By default, it remembers the content you've already downloaded, so will skip it 
 `SKIP_DUPLICATES`: True/False - To skip files already downloaded (Only works if the previous downloads occurred using this package)  
 `REMEMBER_DOWNLOADS`: True/False - Add files being downloaded in current crawl to a duplicate filter (Used to check duplicates)  
 
-`MS_STREAMS_LINKS`:  Links to videos on Microsoft Stream
-`MS_STREAMS_ACCESS_TOKEN`: Authorization token to Microsoft Stream internal API
-``:
+`MS_STREAMS_LINKS`:  Links to videos on Microsoft Stream  
+`MS_STREAMS_ACCESS_TOKEN`: Authorization token to Microsoft Stream internal API  
 
 * Free software: MIT license
